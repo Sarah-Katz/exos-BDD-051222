@@ -32,7 +32,7 @@ SELECT
 FROM
     emp
 WHERE
-    emploi != 'PRESIDENT';
+    sup IS NULL;
 
 --15:Sélectionner les employés qui n’ont pas de chef.
 SELECT
@@ -40,7 +40,7 @@ SELECT
 FROM
     emp
 WHERE
-    emploi = 'PRESIDENT';
+    sup IS NOT NULL;
 
 --16:Sélectionner les noms, emploi, salaire, numéro de service de tous les employés du service 5 qui gagnent plus de 20000 €.
 SELECT
