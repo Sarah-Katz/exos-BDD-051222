@@ -87,5 +87,7 @@ SELECT
     sal
 FROM
     emp
+WHERE
+    noserv = 3
 ORDER BY
     sal;
