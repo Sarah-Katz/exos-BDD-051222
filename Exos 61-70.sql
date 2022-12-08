@@ -172,7 +172,38 @@ WHERE
 
 --69:Sélectionner le nom, l’emploi, la ville pour les employés qui ne travaillent pas dans le même service que leur supérieur hiérarchique direct.
 SELECT
-Comme le 67 frer
+    nom,
+    emploi,
+    ville
+FROM
+    emp
+    INNER JOIN serv ON emp.noserv = serv.noserv
+WHERE
+    emp.sup NOT IN (
+        SELECT
+            emp2.noemp
+        FROM
+            emp emp2
+        WHERE
+            emp.noserv = emp2.noserv
+    );
 
-
-    --70:Sélectionner le nom, le prénom, le service, le revenu des employés qui ont des subalternes, trier le résultat suivant le revenu décroissant.
+--70:Sélectionner le nom, le prénom, le service, le revenu des employés qui ont des subalternes, trier le résultat suivant le revenu décroissant.
+SELECT
+    nom,
+    prenom,
+    noserv,
+    sal
+FROM
+    emp
+WHERE
+    emp.noemp IN (
+        SELECT
+            sup
+        FROM
+            emp emp2
+        WHERE
+            emp.noemp = emp2.sup
+    )
+ORDER BY
+    sal DESC;
