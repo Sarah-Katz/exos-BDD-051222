@@ -37,3 +37,36 @@ FROM
     emp;
 
 --86:Sélectionner les positions des premiers M et E dans les noms des employés.
+SELECT
+    POSITION('M' IN nom) as positionM,
+    POSITION('E' IN nom) as positionE
+FROM
+    emp;
+
+--87:Afficher le nombre de lettres qui sert à écrire le nom de chaque service.
+SELECT
+    service,
+    LENGTH(service)
+FROM
+    serv;
+
+--88:Tracer un Histogramme des salaires avec nom, emploi, salaire triés dans l'ordre décroissant (max de l’histogramme avec 30 caractères).
+--89:Sélectionner nom, emploi, date d'embauche des employés du service 6.
+SELECT
+    nom,
+    emploi,
+    embauche
+FROM
+    emp
+WHERE
+    noserv = 6;
+
+--90:Même chose en écrivant la colonne embauche sous la forme ‘dd-mm-yy’, renommée embauche.
+SELECT
+    nom,
+    emploi,
+    TO_CHAR(embauche :: DATE, 'dd/mm/yyyy') as embauche
+FROM
+    emp
+WHERE
+    noserv = 6;
